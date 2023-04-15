@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../components/shared/components/components.dart';
 import '/presentation/components/chat/components.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -15,7 +16,7 @@ class ChatScreen extends StatelessWidget {
                 'https://www.rollingstone.com/wp-content/uploads/2019/11/CamilaCabello.jpg?w=1581&h=1054&crop=1'),
           ),
         ),
-        title: const Text('My Love  🥰'),
+        title: const Text('Camilla '),
         centerTitle: false,
       ),
       body: const _ChatView(),
@@ -42,12 +43,7 @@ class _ChatView extends StatelessWidget {
                     : const MyMessageBubble();
               },
             )),
-            const Text(
-              'Chat',
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            )
+            MessageFieldBox()
           ],
         ),
       ),
