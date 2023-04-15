@@ -13,8 +13,14 @@ class ChatProvider extends ChangeNotifier {
     ),
   ];
 
+  Future<void> sendMessage(String text) async {
+    final newMessage = MessageEntity(
+      text: 'Ja voltou do traabalho?',
+      fromWho: FromWho.me,
+    );
 
-  Future<void> sendMessage(String text)async{
+    messageList.add(newMessage);
 
+    notifyListeners();
   }
 }
