@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:maybe_app/domain/entities/message_entity.dart';
+import 'package:maybe_app/presentation/providers/chat_provider.dart';
+import 'package:provider/provider.dart';
 import '../../components/shared/components/components.dart';
 import '/presentation/components/chat/components.dart';
 
@@ -29,6 +32,7 @@ class _ChatView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final chatProvider = context.watch<ChatProvider>();
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -36,9 +40,11 @@ class _ChatView extends StatelessWidget {
           children: [
             Expanded(
                 child: ListView.builder(
-              itemCount: 100,
+              itemCount: chatProvider.messageList.length,
               itemBuilder: (context, index) {
-                return (index % 2 == 0)
+                final message = chatProvider.messageList[index];
+
+                return (message.fromWho == FromWho.hers)
                     ? const HerMessageBubble()
                     : const MyMessageBubble();
               },
